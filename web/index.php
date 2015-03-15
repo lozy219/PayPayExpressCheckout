@@ -18,8 +18,9 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 // Our web handlers
 
 $app->get('/', function() use($app) {
-  $app['monolog']->addDebug('logging output.');
-  return 'Hello';
+  // $app['monolog']->addDebug('logging output.');
+  // return 'Hello';
+	return $app['twig']->render('index.twig');
 });
 
 $app->get('/twig/{name}', function ($name) use ($app) {
