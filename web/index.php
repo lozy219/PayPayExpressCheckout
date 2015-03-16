@@ -24,7 +24,7 @@ $app->get('/', function() use($app) {
   // $app['monolog']->addDebug('logging output.');
   // return 'Hello';
 	return $app['twig']->render('index.twig', array(
-		'textbooks' => $textBookController->fetchAllTextBook();
+		'textbooks' => $textBookController->fetchAllTextBook(),
 	));
 });
 
