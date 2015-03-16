@@ -1,6 +1,7 @@
 <?php
 
 require('../vendor/autoload.php');
+require('TextBookController.php');
 
 $app = new Silex\Application();
 $app['debug'] = true;
@@ -15,12 +16,16 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
   'twig.path' => __DIR__.'/views',
 ));
 
+$textBookController = new TextBookController();
+
 // Our web handlers
 
 $app->get('/', function() use($app) {
   // $app['monolog']->addDebug('logging output.');
   // return 'Hello';
-	return $app['twig']->render('index.twig');
+	return $app['twig']->render('index.twig', array(
+		'textbooks' => $textBookController->fetchAllTextBook();
+	));
 });
 
 $app->get('/twig/{name}', function ($name) use ($app) {
