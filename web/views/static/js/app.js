@@ -3,11 +3,23 @@ $(function() {
 		var item = $(this).find(".book-price");
 		if (item.hasClass("selected")) {
 			item.removeClass("selected");
-			item.html(item.attr("data-price"));
-			$('#sum').html((parseFloat($('#sum').html()) - parseFloat(item.html())).toFixed(2));
+			item.html('<span style="font-size: 19px">S$ </span>' + item.attr("data-price"));
+			var sum = (parseFloat($('#sum').html()) - parseFloat(item.attr("data-price"))).toFixed(2)
+			if (sum > 0) {
+				$('#checkout').removeAttr('disabled');
+			} else {
+				$('#checkout').attr('disabled', 'disabled');
+			}
+			$('#sum').html(sum);
 		} else {
 			item.addClass("selected");
-			$('#sum').html((parseFloat($('#sum').html()) + parseFloat(item.html())).toFixed(2));
+			var sum = (parseFloat($('#sum').html()) + parseFloat(item.attr("data-price"))).toFixed(2)
+			if (sum > 0) {
+				$('#checkout').removeAttr('disabled');
+			} else {
+				$('#checkout').attr('disabled', 'disabled');
+			}
+			$('#sum').html(sum);
         	item.html('<i class="fa fa-check-circle"></i>');
 		}
     }); 

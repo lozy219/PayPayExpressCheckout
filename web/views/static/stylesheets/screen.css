@@ -152,7 +152,7 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 /* line 81, ../sass/screen.scss */
 .book:hover *:not(.progress):not(.progress-bar) {
-  background-color: #BDC3C7;
+  background-color: #3498db;
 }
 
 /* line 86, ../sass/screen.scss */
