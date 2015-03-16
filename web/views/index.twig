@@ -35,16 +35,6 @@
 						</li>
 						<li><a href="#fakelink">About Us</a></li>
 					</ul>
-					<form class="navbar-form navbar-right" action="#" role="search">
-						<div class="form-group">
-							<div class="input-group">
-								<input class="form-control" id="navbarInput-01" type="search" placeholder="Search">
-								<span class="input-group-btn">
-									<button type="submit" class="btn"><span class="fui-search"></span></button>
-								</span>
-							</div>
-						</div>
-					</form>
 				</div><!-- /.navbar-collapse -->
 			</nav>
 		</div>
@@ -55,7 +45,18 @@
 		<div class="row">
 			<div class="col-xs-3">
 				<div class="user">
+					<div class="avatar-container">
+						<img id="avatar" src="views/static/img/avatar.png" />
+					</div>
 
+					<div class="sum-container">
+						total cost:<br />
+						S$<span id="sum">0.00</span>
+					</div>
+
+					<div class="checkout-container">
+						<a href="#fakelink" class="btn btn-block btn-lg btn-primary" id="checkout"><i class="fa fa-cc-paypal"></i> check out</a>
+					</div>		
 				</div>
 			</div>
 
@@ -97,7 +98,7 @@
 									</div>
 								</div>
 							</div>
-							<div class="col-xs-3 book-price">
+							<div class="col-xs-3 book-price" data-price="{{book.price}}">
 								{{book.price}}
 							</div>
 						</div>

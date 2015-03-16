@@ -64,6 +64,10 @@ $bg-transition: 0s;
 	@include transition($bg-transition);
 }
 
+.selected {
+	background-color: #2ECC71;
+}
+
 .book-info *{
 	cursor:pointer;
 	@include transition($bg-transition);
@@ -82,4 +86,37 @@ $bg-transition: 0s;
 .progress {
 	margin-bottom: 0px;
 	margin-top: 10px;
+}
+
+.avatar-container {
+	text-align: center;
+	top: 15vh;
+	position: absolute;
+}
+
+.sum-container {
+	width: 100%;
+	text-align: center;
+	top: 55vh;
+	position: absolute;
+	font-size: 36px;
+	font-weight: 800;
+}
+
+#sum {
+	font-size: 58px;
+}
+
+#avatar {
+	width: 70%;
+}
+
+.checkout-container {
+	top: 80vh;
+	position: absolute;
+	width: 70%;
+}
+
+#checkout {
+	margin-left: 20%;
 }
