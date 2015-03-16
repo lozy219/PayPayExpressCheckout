@@ -1,0 +1,85 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "compass/reset";
+
+@mixin transition($time) {
+  -webkit-transition: all $time;
+     -moz-transition: all $time;
+      -ms-transition: all $time;
+          transition: all $time;
+}
+
+.title {
+	text-align: center;
+}
+
+.user {
+	height: 100vh;
+	width: inherit;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background-color: #3498db;
+}
+
+.navbar {
+	margin-bottom: 0px;
+	border-radius: 0px;
+}
+
+.content {
+	margin-top: 50px;
+}
+
+.books {
+	margin-left: 10vw;
+	margin-right: 10vw;
+}
+
+$bg-transition: 0s;
+
+.book-info {
+	background-color: #ECF0F1;
+	border-radius: 20px 0px 0px 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	cursor:pointer;
+	@include transition($bg-transition);
+}
+
+.book-price {
+	background-color: #2980B9;
+	border-radius: 0px 20px 20px 0px;
+	color: #ECF0F1;
+	font-size: 50px;
+	font-weight: 900;
+	height: 110px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	cursor:pointer;
+	@include transition($bg-transition);
+}
+
+.book-info *{
+	cursor:pointer;
+	@include transition($bg-transition);
+}
+
+.book {
+	margin-top: 40px;
+	margin-bottom: 40px;
+	color: #2C3E50;
+
+	&:hover *:not(.progress):not(.progress-bar){
+		background-color: #BDC3C7;
+	}
+}
+
+.progress {
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
