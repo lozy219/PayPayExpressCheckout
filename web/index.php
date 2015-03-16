@@ -16,7 +16,7 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
   'twig.path' => __DIR__.'/views',
 ));
 
-$textBookController = new TextBookController();
+$app['textBookController'] = new TextBookController();
 
 // Our web handlers
 
@@ -24,7 +24,7 @@ $app->get('/', function() use($app) {
   // $app['monolog']->addDebug('logging output.');
   // return 'Hello';
 	return $app['twig']->render('index.twig', array(
-		'textbooks' => $textBookController->fetchAllTextBook(),
+		'textbooks' => $app['textBookController']->fetchAllTextBook(),
 	));
 });
 
