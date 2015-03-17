@@ -23,4 +23,26 @@ $(function() {
         	item.html('<i class="fa fa-check-circle"></i>');
 		}
     }); 
+
+    $('#checkout').click(function () {
+    	$('div[id^="book-"]').each(function () {
+    		var id = $(this).attr('id').substr(5);
+    		if (is_selected(id)) {
+    			$('#order-' + id).show();
+    		}
+    	});
+
+    	var sum = parseFloat($('#sum').html());
+    	$('#modal-sum').html((sum * 1.07).toFixed(2));
+    });
 });
+
+function is_selected(id) {
+	var item = $('#book-' + id).find(".book-price");
+	console.log(item);
+	if (item.hasClass("selected")) {
+		return true;
+	} else {
+		return false;
+	}
+}

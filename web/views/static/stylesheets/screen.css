@@ -199,3 +199,14 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 #checkout {
   margin-left: 20%;
 }
+
+/* line 124, ../sass/screen.scss */
+.modal-total {
+  float: left;
+}
+
+/* line 128, ../sass/screen.scss */
+#modal-sum {
+  font-weight: 900;
+  font-size: 20px;
+}
