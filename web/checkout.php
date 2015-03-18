@@ -60,7 +60,7 @@ if ($_POST) {
 				'&PAYMENTREQUEST_0_AMT='.urlencode($total * 1.07).
 				'&PAYMENTREQUEST_0_CURRENCYCODE='.urlencode(CURRENCY) .
 				'&LOCALECODE=SG' . 
-				'&LOGOIMG=http://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Max_Planck_1933.jpg/450px-Max_Planck_1933.jpg' . 
+				'&LOGOIMG=http://i.imgur.com/yQhPF2K.png' . 
 				'&CARTBORDERCOLOR=FFFFFF' . 
 				'&ALLOWNOTE=1';
 	
@@ -109,6 +109,7 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 
 	if ((checkAck($response)) && (checkCompleted($response))) {
 		// modify database
+		
 		header("Location: success");
 	} else {
 		header("Location: failed");

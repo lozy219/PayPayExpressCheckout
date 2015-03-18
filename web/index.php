@@ -51,6 +51,13 @@ $app->get('/success', function() use($app) {
   ));
 });
 
+$app->get('/failed', function() use($app) {
+  return $app['twig']->render('index.twig', array(
+    'textbooks' => $app['textBookController']->fetchAllTextBook(),
+    'failed' => '1',
+  ));
+});
+
 $app->get('/twig/{name}', function ($name) use ($app) {
     return $app['twig']->render('index.twig', array(
         'name' => $name,
