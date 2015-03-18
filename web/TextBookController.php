@@ -3,18 +3,17 @@
 require_once("TextBook.php");
 
 class TextBookController {
-	private $app;
-	function __construct($app){
-		$this->app = $app;
+	private $db;
+	function __construct($db){
+		$this->db = $db;
 	}
 
 	public function fetchAllTextBook() {
-		$query = $this->app['pdo']->prepare('SELECT * FROM book;');
+		$query = $this->db->prepare('SELECT * FROM book;');
 		$query->execute();
 
 		$books = array();
 		while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-			// $app['monolog']->addDebug('Row ' . $row['id']);
 			$books[] = new TextBook($row['id'], 
 									$row['title'], 
 									$row['module'], 

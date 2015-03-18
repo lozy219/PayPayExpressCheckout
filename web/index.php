@@ -28,13 +28,11 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
   )
 );
 
-$app['textBookController'] = new TextBookController($app);
+$app['textBookController'] = new TextBookController($app['pdo']);
 
 // Our web handlers
 
 $app->get('/', function() use($app) {
-  // $app['monolog']->addDebug('logging output.');
-  // return 'Hello';
 	return $app['twig']->render('index.twig', array(
 		'textbooks' => $app['textBookController']->fetchAllTextBook(),
 	));
