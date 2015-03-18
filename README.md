@@ -1,32 +1,53 @@
-# php-getting-started
+# Paypal Express Checkout Exercise
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+A simple integration of Paypal express checkout API.
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
 
-## Running Locally
 
-Make sure you have PHP, Apache and Composer installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
+## Resources
 
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ composer update
-$ foreman start web
-```
+[Assignment description](https://github.com/PayPalLabs/applications-2015)
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+[GitHub repository](https://github.com/lozy219/api_exercise)
 
-## Deploying to Heroku
+[Online demo](https://textbook-paypal.herokuapp.com/)
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
 
-## Documentation
+## Screenshots
+![Homepage](http://i.imgur.com/yGPFHy7.png)
 
-For more information about using PHP on Heroku, see these Dev Center articles:
+This the homepage of the simple used textbook market. Initially, the checkout button on the left side and the paypal button on the navigation bar are disabled.
 
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
+![Item chosen](http://i.imgur.com/hs1ErMx.png)
+
+When you choose some of the books in the list, the total price will be updated, and the two checkout button will be enabled.
+
+![Checkout](http://i.imgur.com/z5pl9qB.png)
+
+After clicking the checkout button, a confirmation modal page will be presented. After reviewing and proceed, the user will redirected to the payment page.
+
+![Payment](http://i.imgur.com/CLM470B.png)
+
+The payment is under the sandbox environment, after the user enters the user name and password, and confirms the payment, they will be redirect back to the main page.
+
+![Success](http://i.imgur.com/1bhVds7.png)
+
+Another modal will appear, telling the user the transaction is successfull.
+
+![Display](http://i.imgur.com/3pC590K.png)
+
+The book you book will be displayed as sold item.
+
+
+## Account
+
+Account for testing.
+
+- Email: test@hao123.com
+- Password: qwerty000
+
+## Acknowledgement
+Some of the *free* resources I used.
+
+- [Jozef Krajčovič's free icon](https://www.behance.net/gallery/11889067/Flat-avatars-icons)
+- [Heroku](https://www.heroku.com/)
