@@ -14,7 +14,7 @@ class TextBookController {
 
 		$books = array();
 		while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-			$app['monolog']->addDebug('Row ' . $row['id']);
+			// $app['monolog']->addDebug('Row ' . $row['id']);
 			$books[] = $row;
 		}
 		print_r($books);
