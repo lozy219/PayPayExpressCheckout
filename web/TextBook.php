@@ -6,13 +6,15 @@ class TextBook {
 	var $module_code;
 	var $price;
 	var $condition;
+	var $availability;
 
-	function __construct($id, $title, $module_code, $price, $condition = 10){
-		$this->id          = $id;
-		$this->title       = $title;
-		$this->module_code = $module_code;
-		$this->price       = $price;
-		$this->condition   = $condition;
+	function __construct($id, $title, $module_code, $price, $condition, $availability) {
+		$this->id           = $id;
+		$this->title        = $title;
+		$this->module_code  = $module_code;
+		$this->price        = $price;
+		$this->condition    = $condition;
+		$this->availability = $availability;
 	}
 
 }
