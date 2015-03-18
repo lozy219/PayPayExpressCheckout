@@ -27,7 +27,7 @@ $app->register(new Herrera\Pdo\PdoServiceProvider(),
   )
 );
 
-$app['textBookController'] = new TextBookController();
+$app['textBookController'] = new TextBookController($app);
 
 // Our web handlers
 
