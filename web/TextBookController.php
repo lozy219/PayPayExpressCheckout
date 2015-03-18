@@ -14,10 +14,11 @@ class TextBookController {
 
 		$books = array();
 		while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
-			die('1');
-			$app['monolog']->addDebug('Row ' . $row['name']);
+			$app['monolog']->addDebug('Row ' . $row['id']);
 			$books[] = $row;
 		}
+		print_r($books);
+		die();
 		return $books;
 	}
 }
