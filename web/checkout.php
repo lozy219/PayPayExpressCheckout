@@ -109,7 +109,6 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 
 	if ((checkAck($response)) && (checkCompleted($response))) {
 		// modify database
-		
 		header("Location: success");
 	} else {
 		header("Location: failed");

@@ -22,22 +22,19 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 // Register databse
-// $dbopts = parse_url(getenv('DATABASE_URL'));
-// $app->register(new Herrera\Pdo\PdoServiceProvider(),
-//   array(
-//     'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
-//     'pdo.port' => $dbopts["port"],
-//     'pdo.username' => $dbopts["user"],
-//     'pdo.password' => $dbopts["pass"]
-//   )
-// );
+$dbopts = parse_url(getenv('DATABASE_URL'));
+$app->register(new Herrera\Pdo\PdoServiceProvider(),
+  array(
+    'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
+    'pdo.port' => $dbopts["port"],
+    'pdo.username' => $dbopts["user"],
+    'pdo.password' => $dbopts["pass"]
+  )
+);
 
-// $app['textBookController'] = new TextBookController($app['pdo']);
+$app['textBookController'] = new TextBookController($app['pdo']);
 
-$app['textBookController'] = new TextBookController();
-
-// Our web handlers
-
+// web handlers
 $app->get('/', function() use($app) {
 	return $app['twig']->render('index.twig', array(
 		'textbooks' => $app['textBookController']->fetchAllTextBook()
@@ -56,12 +53,6 @@ $app->get('/failed', function() use($app) {
     'textbooks' => $app['textBookController']->fetchAllTextBook(),
     'failed' => '1',
   ));
-});
-
-$app->get('/twig/{name}', function ($name) use ($app) {
-    return $app['twig']->render('index.twig', array(
-        'name' => $name,
-    ));
 });
 
 $app->run();

@@ -31,6 +31,7 @@
 
 	<div class="content">
 		<div class="row">
+			<!-- userpanel -->
 			<div class="col-xs-3">
 				<div class="user">
 					<div class="avatar-container">
@@ -49,7 +50,9 @@
 					</div>		
 				</div>
 			</div>
+			<!-- /userpanel -->
 
+			<!-- main -->
 			<div class="col-xs-9">
 				<div class="title"> 
 					<h1>
@@ -103,9 +106,11 @@
 					{% endfor %}
 				</div>
 			</div>
+			<!-- /userpanel -->
 		</div>
 	</div>
 
+	<!-- confirm modal -->
 	<div class="modal fade" id="confirm-order" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -144,7 +149,9 @@
 			</div>
 		</div>
 	</div>
+	<!-- end confirm modal -->
 
+	<!-- success modal -->
 	{% if success is defined %}
 		<div class="modal fade in" id="thanks" tabindex="-1" role="dialog" aria-labelledby="thanks" aria-hidden="true">
 			<div class="modal-dialog">
@@ -163,7 +170,9 @@
 			</div>
 		</div>
 	{% endif %}
+	<!-- end success modal -->
 
+	<!-- failed modal -->
 	{% if failed is defined %}
 		<div class="modal fade in" id="sorry" tabindex="-1" role="dialog" aria-labelledby="sorry" aria-hidden="true">
 			<div class="modal-dialog">
@@ -182,6 +191,7 @@
 			</div>
 		</div>
 	{% endif %}
+	<!-- end failed modal -->
 </body>
 <script type="text/javascript" src="views/static/js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="views/static/js/bootstrap.js"></script>

@@ -1,21 +1,26 @@
 <?php
 include_once("config.php");
 
+// check ack for response
 function checkAck($response) {
 	$ack = strtoupper($response["ACK"]);
 	return $ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING";
 }
 
+// check complete for response
 function checkCompleted($response) {
 	$status = strtoupper($response["PAYMENTINFO_0_PAYMENTSTATUS"]);
 	return $status == "COMPLETED" || $status == "PENDING";
 }
 
+// post request using curl
 function postRequest($method, $nvp) {
 	$toCurl = curl_init();
+
+	// curl set up
 	curl_setopt($toCurl, CURLOPT_URL, "https://api-3t.sandbox.paypal.com/nvp");
 	curl_setopt($toCurl, CURLOPT_PORT , 443);
-	curl_setopt($toCurl, CURLOPT_VERBOSE, 1);// to be changed
+	curl_setopt($toCurl, CURLOPT_VERBOSE, 0);
 	curl_setopt($toCurl, CURLOPT_VERBOSE, TRUE);
 	curl_setopt($toCurl, CURLOPT_SSL_VERIFYPEER, FALSE);
 	curl_setopt($toCurl, CURLOPT_SSL_VERIFYHOST, FALSE);
@@ -31,11 +36,14 @@ function postRequest($method, $nvp) {
 	
 	curl_setopt($toCurl, CURLOPT_POSTFIELDS, $request);
 	
+	// execute
 	$response = curl_exec($toCurl);
 	
 	if (!$response) {
-		exit("$method failed: ".curl_error($toCurl).'('.curl_errno($toCurl).')');
+		// failed
+		header("Location: failed");
 	} else {
+		// store the response
 		$responseArray = explode("&", $response);
 	
 		$parsedResponse = array();
@@ -47,7 +55,8 @@ function postRequest($method, $nvp) {
 		}
 	
 		if (!array_key_exists('ACK', $parsedResponse) || (sizeof($parsedResponse) == 0)) {
-			exit("Invalid HTTP Response for POST request($request) to $API_Endpoint.");
+			// invalid response
+			header("Location: failed");
 		}
 	
 		return $parsedResponse;
