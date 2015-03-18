@@ -5,10 +5,6 @@ require_once("Textbook.php");
 class TextbookController {
 	private static $db = false;
 
-	// function __construct(){
-	
-	// }
-
 	public static function establish($db) {
 		if (!(TextbookController::$db)) {
 			TextbookController::$db = $db;

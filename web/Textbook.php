@@ -16,7 +16,6 @@ class Textbook {
 		$this->condition    = $condition;
 		$this->availability = $availability;
 	}
-
 }
 
 ?>
