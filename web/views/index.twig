@@ -117,29 +117,34 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 					<h4 class="modal-title" id="myModalLabel">Confirm your order</h4>
 				</div>
-				<div class="modal-body">
-					<div class="order-list">
-						{% for book in textbooks %}
-							<div id="order-{{book.id}}" style="display:none">
-								<div class="row">
-									<div class="col-xs-9">
-										{{book.title}}
-									</div>
-									<div class="col-xs-3">
-										S${{book.price}}.00
+				<form action="checkout.php" method="post">
+					<div class="modal-body">
+						<div class="order-list">
+							{% for book in textbooks %}
+								<div id="order-{{book.id}}" style="display:none">
+									<div class="row">
+										<div class="col-xs-9">
+											{{book.title}}
+											<input type="hidden" name="item-{{book.id}}" value="{{book.title}}" /> 
+											<input type="hidden" name="price-{{book.id}}" value="{{book.price}}" /> 
+											<input type="checkbox" id="checkbox-{{book.id}}" style="display:none" name="selected-book[]" value="{{book.id}}" />
+										</div>
+										<div class="col-xs-3">
+											S${{book.price}}.00
+										</div>
 									</div>
 								</div>
-							</div>
-						{% endfor %}
+							{% endfor %}
+						</div>
 					</div>
-				</div>
-				<div class="modal-footer">
-					<span class="modal-total">
-						total: S$<span id="modal-sum">0.00</span> (GST included)
-					</span>
-					<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-					<button type="button" class="btn btn-primary"><i class="fa fa-cc-paypal"></i>  Proceed</button>
-				</div>
+					<div class="modal-footer">
+						<span class="modal-total">
+							total: S$<span id="modal-sum">0.00</span> (GST included)
+						</span>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+						<button type="submit" class="btn btn-primary"><i class="fa fa-cc-paypal"></i>  Proceed</button>
+					</div>
+				</form>
 			</div>
 		</div>
 	</div>

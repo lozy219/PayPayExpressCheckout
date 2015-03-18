@@ -29,6 +29,7 @@ $(function() {
     		var id = $(this).attr('id').substr(5);
     		if (is_selected(id)) {
     			$('#order-' + id).show();
+    			$('#checkbox-' + id).attr('checked', true);
     		}
     	});
 
