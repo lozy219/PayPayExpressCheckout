@@ -16,6 +16,17 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
   'twig.path' => __DIR__.'/views',
 ));
 
+// Register databse
+$dbopts = parse_url("postgres://oyiauwtvjccquc:M7oFgcrR7pgtDL0LVmF50A5ZrO@ec2-184-73-221-47.compute-1.amazonaws.com:5432/dbehetivepig6p");  
+$app->register(new Herrera\Pdo\PdoServiceProvider(),
+  array(
+    'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
+    'pdo.port' => $dbopts["port"],
+    'pdo.username' => $dbopts["user"],
+    'pdo.password' => $dbopts["pass"]
+  )
+);
+
 $app['textBookController'] = new TextBookController();
 
 // Our web handlers

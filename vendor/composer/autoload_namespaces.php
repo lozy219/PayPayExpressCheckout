@@ -15,4 +15,5 @@ return array(
     'Silex' => array($vendorDir . '/silex/silex/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Pimple' => array($vendorDir . '/pimple/pimple/lib'),
+    'Herrera\\Pdo' => array($vendorDir . '/herrera-io/pdo-log/src/lib', $vendorDir . '/herrera-io/silex-pdo/src/lib'),
 );
