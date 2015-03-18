@@ -1,32 +1,24 @@
-# php-getting-started
+# Paypal Express Checkout Exercise
 
-A barebones PHP app that makes use of the [Silex](http://silex.sensiolabs.org/) web framework, which can easily be deployed to Heroku.
+A simple integration of Paypal express checkout API.
 
-This application supports the [Getting Started with PHP on Heroku](https://devcenter.heroku.com/articles/getting-started-with-php) article - check it out.
 
-## Running Locally
 
-Make sure you have PHP, Apache and Composer installed.  Also, install the [Heroku Toolbelt](https://toolbelt.heroku.com/).
+## Resources
 
-```sh
-$ git clone git@github.com:heroku/php-getting-started.git # or clone your own fork
-$ cd php-getting-started
-$ composer update
-$ foreman start web
-```
+[Assignment description](https://github.com/PayPalLabs/applications-2015)
 
-Your app should now be running on [localhost:5000](http://localhost:5000/).
+[GitHub repository](https://github.com/lozy219/api_exercise)
 
-## Deploying to Heroku
+[Online demo](https://textbook-paypal.herokuapp.com/)
 
-```
-$ heroku create
-$ git push heroku master
-$ heroku open
-```
 
-## Documentation
+## Screenshots
+![Homepage](http://i.imgur.com/yGPFHy7.png)
 
-For more information about using PHP on Heroku, see these Dev Center articles:
+This the homepage of the simple used textbook market. Initially, the checkout button on the left side and the paypal button on the navigation bar are disabled.
 
-- [PHP on Heroku](https://devcenter.heroku.com/categories/php)
+![Item chosen](http://i.imgur.com/hs1ErMx.png)
+
+When you choose some of the books in the list, the total price will be updated, and the two checkout button will be enabled.
+
