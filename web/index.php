@@ -57,10 +57,8 @@ $app->get('/failed', function() use($app) {
 
 $app->get('/mark/{ids}', function($ids) use($app) {
 	TextbookController::markSold(json_decode($ids));
-	return $app['twig']->render('index.twig', array(
-		'textbooks' => TextbookController::fetchAllTextbook(),
-		'success' => '1',
-		));
+	// small trick to hide the get request from the users
+	return $app['twig']->render('mark.twig', array());
 });
 
 $app->run();
