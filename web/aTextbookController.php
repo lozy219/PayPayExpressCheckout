@@ -1,6 +1,6 @@
 <?php
 
-require_once("TextBook.php");
+require_once("Textbook.php");
 
 class TextbookController {
 	private static $db = false;
