@@ -27,7 +27,7 @@ class TextbookController {
 		// 	);
 
 		// fetch all the book
-		$query = TextbookController::$db->prepare('SELECT * FROM book');
+		$query = TextbookController::$db->prepare('SELECT * FROM book ORDER BY id');
 		$query->execute();
 
 		$books = array();

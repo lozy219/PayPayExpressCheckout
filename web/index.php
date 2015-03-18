@@ -57,8 +57,10 @@ $app->get('/failed', function() use($app) {
 
 $app->get('/mark/{ids}', function($ids) use($app) {
 	TextbookController::markSold(json_decode($ids));
-	header('Location: success');
-	return ;
+	return $app['twig']->render('index.twig', array(
+		'textbooks' => TextbookController::fetchAllTextbook(),
+		'success' => '1',
+		));
 });
 
 $app->run();
