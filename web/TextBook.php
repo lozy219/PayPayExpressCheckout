@@ -1,6 +1,6 @@
 <?php
 
-class TextBook {
+class Textbook {
 	var $id;
 	var $title;
 	var $module_code;

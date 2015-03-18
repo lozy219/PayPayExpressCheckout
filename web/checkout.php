@@ -1,9 +1,10 @@
 <?php
 include_once("utilities.php");
 include_once("constant.php");
+include_once("TextbookController.php");
 
 if (session_status() == PHP_SESSION_NONE) {
-  session_start(); 
+	session_start(); 
 }
 
 if ($_POST) {
@@ -109,6 +110,7 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 
 	if ((checkAck($response)) && (checkCompleted($response))) {
 		// modify database
+		TextbookController::markSold($_SESSION['item_id']);
 		header("Location: success");
 	} else {
 		header("Location: failed");
