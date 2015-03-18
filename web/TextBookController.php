@@ -13,7 +13,7 @@ class TextBookController {
 		$query->execute();
 
 		$books = array();
-		while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+		while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
 			$app['monolog']->addDebug('Row ' . $row['name']);
 			$books[] = $row;
 		}
