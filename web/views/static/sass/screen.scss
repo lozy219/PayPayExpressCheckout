@@ -83,6 +83,15 @@ $bg-transition: 0s;
 	}
 }
 
+.book-disable *{
+	background-color: #95A5A6;
+	cursor: not-allowed;
+}
+
+.book-disable .progress-bar{
+	background-color: #4A4A4A;
+}
+
 .progress {
 	margin-bottom: 0px;
 	margin-top: 10px;

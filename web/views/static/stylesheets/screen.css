@@ -156,19 +156,30 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 86, ../sass/screen.scss */
+.book-disable * {
+  background-color: #95A5A6;
+  cursor: not-allowed;
+}
+
+/* line 91, ../sass/screen.scss */
+.book-disable .progress-bar {
+  background-color: #4A4A4A;
+}
+
+/* line 95, ../sass/screen.scss */
 .progress {
   margin-bottom: 0px;
   margin-top: 10px;
 }
 
-/* line 91, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 .avatar-container {
   text-align: center;
   top: 15vh;
   position: absolute;
 }
 
-/* line 97, ../sass/screen.scss */
+/* line 106, ../sass/screen.scss */
 .sum-container {
   width: 100%;
   text-align: center;
@@ -178,34 +189,34 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-weight: 800;
 }
 
-/* line 106, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 #sum {
   font-size: 58px;
 }
 
-/* line 110, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 #avatar {
   width: 70%;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 123, ../sass/screen.scss */
 .checkout-container {
   top: 80vh;
   position: absolute;
   width: 70%;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 129, ../sass/screen.scss */
 #checkout {
   margin-left: 20%;
 }
 
-/* line 124, ../sass/screen.scss */
+/* line 133, ../sass/screen.scss */
 .modal-total {
   float: left;
 }
 
-/* line 128, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 #modal-sum {
   font-weight: 900;
   font-size: 20px;

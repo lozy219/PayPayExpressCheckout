@@ -17,18 +17,19 @@ $app->register(new Silex\Provider\TwigServiceProvider(), array(
 ));
 
 // Register databse
-// $dbopts = parse_url("postgres://oyiauwtvjccquc:M7oFgcrR7pgtDL0LVmF50A5ZrO@ec2-184-73-221-47.compute-1.amazonaws.com:5432/dbehetivepig6p");  
-$dbopts = parse_url(getenv('DATABASE_URL'));
-$app->register(new Herrera\Pdo\PdoServiceProvider(),
-  array(
-    'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
-    'pdo.port' => $dbopts["port"],
-    'pdo.username' => $dbopts["user"],
-    'pdo.password' => $dbopts["pass"]
-  )
-);
+// $dbopts = parse_url(getenv('DATABASE_URL'));
+// $app->register(new Herrera\Pdo\PdoServiceProvider(),
+//   array(
+//     'pdo.dsn' => 'pgsql:dbname='.ltrim($dbopts["path"],'/').';host='.$dbopts["host"],
+//     'pdo.port' => $dbopts["port"],
+//     'pdo.username' => $dbopts["user"],
+//     'pdo.password' => $dbopts["pass"]
+//   )
+// );
 
-$app['textBookController'] = new TextBookController($app['pdo']);
+// $app['textBookController'] = new TextBookController($app['pdo']);
+
+$app['textBookController'] = new TextBookController();
 
 // Our web handlers
 

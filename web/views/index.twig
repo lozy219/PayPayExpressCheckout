@@ -71,7 +71,11 @@
 
 				<div class="books">
 					{% for book in textbooks %}
-						<div class="row book" id="book-{{book.id}}">
+						{% if book.availability == '0' %}
+							<div class="row book-disable">
+						{% else %}
+							<div class="row book" id="book-{{book.id}}">
+						{% endif %}
 							<div class="col-xs-9 book-info">
 								<div class="row">
 									<div class="col-xs-4">
@@ -101,7 +105,11 @@
 								</div>
 							</div>
 							<div class="col-xs-3 book-price" data-price="{{book.price}}">
-								<span style="font-size: 19px">S$ </span>{{book.price}}
+								{% if book.availability == '0' %}
+									<span style="font-size: 39px; color: #C0392B">SOLD</span>
+								{% else %}
+									<span style="font-size: 19px">S$ </span>{{book.price}}
+								{% endif %}
 							</div>
 						</div>
 					{% endfor %}
