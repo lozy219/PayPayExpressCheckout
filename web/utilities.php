@@ -1,9 +1,14 @@
 <?php
 include_once("config.php");
 
-function checkAck($ack) {
-	$ack = strtoupper($ack);
+function checkAck($response) {
+	$ack = strtoupper($response["ACK"]);
 	return $ack == "SUCCESS" || $ack == "SUCCESSWITHWARNING";
+}
+
+function checkCompleted($response) {
+	$status = strtoupper($response["PAYMENTINFO_0_PAYMENTSTATUS"]);
+	return $status == "COMPLETED" || $status == "PENDING";
 }
 
 function postRequest($method, $nvp) {

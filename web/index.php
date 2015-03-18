@@ -3,6 +3,11 @@
 require('../vendor/autoload.php');
 require('TextBookController.php');
 
+
+if (session_status() == PHP_SESSION_NONE) {
+  session_start(); 
+}
+
 $app = new Silex\Application();
 $app['debug'] = true;
 
@@ -35,8 +40,15 @@ $app['textBookController'] = new TextBookController();
 
 $app->get('/', function() use($app) {
 	return $app['twig']->render('index.twig', array(
-		'textbooks' => $app['textBookController']->fetchAllTextBook(),
+		'textbooks' => $app['textBookController']->fetchAllTextBook()
 	));
+});
+
+$app->get('/success', function() use($app) {
+  return $app['twig']->render('index.twig', array(
+    'textbooks' => $app['textBookController']->fetchAllTextBook(),
+    'success' => '1',
+  ));
 });
 
 $app->get('/twig/{name}', function ($name) use ($app) {

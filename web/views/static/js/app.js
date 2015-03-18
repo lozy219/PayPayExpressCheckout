@@ -1,4 +1,8 @@
 $(function() {
+	if ($('#thanks').length) {
+		$('#thanks').modal('show');
+	}
+
 	$('div[id^="book-"]').click(function () {
 		var item = $(this).find(".book-price");
 		if (item.hasClass("selected")) {

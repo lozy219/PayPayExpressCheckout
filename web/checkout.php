@@ -1,8 +1,9 @@
 <?php
 include_once("utilities.php");
+include_once("constant.php");
 
 if (session_status() == PHP_SESSION_NONE) {
-	session_start(); 
+  session_start(); 
 }
 
 if ($_POST) {
@@ -15,8 +16,8 @@ if ($_POST) {
 	$_SESSION['item'] = $item;
 	
 	$request = '&METHOD=SetExpressCheckout'.
-			   '&RETURNURL=' . urlencode($PayPalReturnURL).
-			   '&CANCELURL=' . urlencode($PayPalCancelURL).
+			   '&RETURNURL=' . urlencode(RETURN_URL) .
+			   '&CANCELURL=' . urlencode(CANCEL_URL) .
 			   '&PAYMENTREQUEST_0_PAYMENTACTION=' . urlencode("SALE");
 	
 	$current = 0;
@@ -38,7 +39,7 @@ if ($_POST) {
 				'&PAYMENTREQUEST_0_SHIPDISCAMT=0'.
 				'&PAYMENTREQUEST_0_INSURANCEAMT=0'.
 				'&PAYMENTREQUEST_0_AMT='.urlencode($total * 1.07).
-				'&PAYMENTREQUEST_0_CURRENCYCODE='.urlencode($PayPalCurrencyCode) .
+				'&PAYMENTREQUEST_0_CURRENCYCODE='.urlencode(CURRENCY) .
 				'&LOCALECODE=SG' . 
 				'&LOGOIMG=http://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Max_Planck_1933.jpg/450px-Max_Planck_1933.jpg' . 
 				'&CARTBORDERCOLOR=FFFFFF' . 
@@ -46,7 +47,7 @@ if ($_POST) {
 	
 	$response = postRequest('SetExpressCheckout', $request);
 	
-	if (checkAck($response["ACK"])) {
+	if (checkAck($response)) {
 		$paypalurl ='https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=' . $response["TOKEN"];
 		header('Location: '.$paypalurl);
 		
@@ -84,74 +85,15 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 				 '&PAYMENTREQUEST_0_SHIPDISCAMT=0' .
 			 	 '&PAYMENTREQUEST_0_INSURANCEAMT=0' .
 				 '&PAYMENTREQUEST_0_AMT=' . urlencode($total * 1.07) .
-				 '&PAYMENTREQUEST_0_CURRENCYCODE=' . urlencode($PayPalCurrencyCode);
-	
+				 '&PAYMENTREQUEST_0_CURRENCYCODE=' . urlencode(CURRENCY);
+
 	$response = postRequest('DoExpressCheckoutPayment', $request);
-	
-	if ((checkAck($response["ACK"]))) {
-		echo '<h2>Success</h2>';
-		echo 'Your Transaction ID : '.urldecode($response["PAYMENTINFO_0_TRANSACTIONID"]);
-				
-		if('Completed' == $response["PAYMENTINFO_0_PAYMENTSTATUS"]) {
-			echo '<div style="color:green">Payment Received! Your product will be sent to you very soon!</div>';
-		}
-		elseif('Pending' == $response["PAYMENTINFO_0_PAYMENTSTATUS"]) {
-			echo '<div style="color:red">Transaction Complete, but payment is still pending! '.
-			'You need to manually authorize this payment in your <a target="_new" href="http://www.paypal.com">Paypal Account</a></div>';
-		}
 
-		// we can retrive transection details using either GetTransactionDetails or GetExpressCheckoutDetails
-		// GetTransactionDetails requires a Transaction ID, and GetExpressCheckoutDetails requires Token returned by SetExpressCheckOut
-		$request = 	'&TOKEN='.urlencode($token);
-		$paypal= new MyPayPal();
-		$response = $paypal->PPHttpPost('GetExpressCheckoutDetails', $request, $PayPalApiUsername, $PayPalApiPassword, $PayPalApiSignature, $PayPalMode);
-
-		if (checkAck($response["ACK"])) {
-			
-			echo '<br /><b>Stuff to store in database :</b><br /><pre>';
-			/*
-			#### SAVE BUYER INFORMATION IN DATABASE ###
-			//see (http://www.sanwebe.com/2013/03/basic-php-mysqli-usage) for mysqli usage
-			
-			$buyerName = $response["FIRSTNAME"].' '.$response["LASTNAME"];
-			$buyerEmail = $response["EMAIL"];
-			
-			//Open a new connection to the MySQL server
-			$mysqli = new mysqli('host','username','password','database_name');
-			
-			//Output any connection error
-			if ($mysqli->connect_error) {
-				die('Error : ('. $mysqli->connect_errno .') '. $mysqli->connect_error);
-			}		
-			
-			$insert_row = $mysqli->query("INSERT INTO BuyerTable 
-			(BuyerName,BuyerEmail,TransactionID,ItemName,ItemNumber, ItemAmount,ItemQTY)
-			VALUES ('$buyerName','$buyerEmail','$transactionID','$ItemName',$ItemNumber, $ItemTotalPrice,$ItemQTY)");
-			
-			if($insert_row){
-				print 'Success! ID of last inserted record is : ' .$mysqli->insert_id .'<br />'; 
-			}else{
-				die('Error : ('. $mysqli->errno .') '. $mysqli->error);
-			}
-			
-			*/
-			
-			echo '<pre>';
-			print_r($response);
-			echo '</pre>';
-		} else  {
-			echo '<div style="color:red"><b>GetTransactionDetails failed:</b>'.urldecode($response["L_LONGMESSAGE0"]).'</div>';
-			echo '<pre>';
-			print_r($response);
-			echo '</pre>';
-
-		}
+	if ((checkAck($response)) && (checkCompleted($response))) {
+		// modify database
+		header("Location: success");
+	} else {
 		
-	}else{
-		echo '<div style="color:red"><b>Error : </b>'.urldecode($response["L_LONGMESSAGE0"]).'</div>';
-		echo '<pre>';
-		print_r($response);
-		echo '</pre>';
 	}
 }
 ?>
