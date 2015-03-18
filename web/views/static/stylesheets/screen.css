@@ -221,3 +221,20 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
   font-weight: 900;
   font-size: 20px;
 }
+
+/* line 142, ../sass/screen.scss */
+#logo {
+  height: inherit;
+  top: 0;
+}
+
+/* line 147, ../sass/screen.scss */
+.navbar-item {
+  margin-right: 50px;
+}
+
+/* line 151, ../sass/screen.scss */
+.navbar-disabled {
+  color: #BDC3C7 !important;
+  cursor: not-allowed !important;
+}

@@ -138,3 +138,17 @@ $bg-transition: 0s;
 	font-weight: 900;
 	font-size: 20px;
 }
+
+#logo {
+	height: inherit;
+	top: 0;
+}
+
+.navbar-item {
+	margin-right: 50px;
+}
+
+.navbar-disabled {
+	color: #BDC3C7 !important;
+	cursor: not-allowed !important;
+}
