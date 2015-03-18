@@ -110,8 +110,8 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 
 	if ((checkAck($response)) && (checkCompleted($response))) {
 		// modify database
-		TextbookController::markSold($_SESSION['item_id']);
-		header("Location: success");
+		
+		header("Location: mark/" . json_encode($_SESSION['item_id']));
 	} else {
 		header("Location: failed");
 	}
