@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Textbook 
+ * store the necessary information of a textbook for later use
+ */
 class Textbook {
 	var $id;
 	var $title;

@@ -1,11 +1,12 @@
+# original data for testing
 CREATE TABLE book (
-	id SERIAL PRIMARY KEY,
-	title VARCHAR(100),
-	module VARCHAR(10),
-	price INT,
-	condition REAL,
-	availability BIT,
-	CHECK (condition < 10)
+    id SERIAL PRIMARY KEY,
+    title VARCHAR(100),
+    module VARCHAR(10),
+    price INT,
+    condition REAL,
+    availability BIT,
+    CHECK (condition < 10)
 );
 
 INSERT INTO book(title, module, price, condition, availability) VALUES ('Introduction to Algorithms', 'CS3230', 35, 8, '1');
