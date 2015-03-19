@@ -1,7 +1,8 @@
 <?php
 
-require('../vendor/autoload.php');
-require('controller/TextbookController.php');
+require_once('../vendor/autoload.php');
+require_once("model/Textbook.php");
+require_once('controller/TextbookController.php');
 
 $app = new Silex\Application();
 $app['debug'] = true;

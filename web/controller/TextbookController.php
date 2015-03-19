@@ -1,7 +1,4 @@
 <?php
-
-require_once("../model/Textbook.php");
-
 /**
  * Textbook Controller
  * interact with database
