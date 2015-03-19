@@ -52,8 +52,3 @@ Some of the *free* resources I used.
 - [Jozef Krajčovič's free icon](https://www.behance.net/gallery/11889067/Flat-avatars-icons)
 - [Heroku](https://www.heroku.com/)
 
-
-## Remarks
-
-- refactoring needed
-- re-structure needed
