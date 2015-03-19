@@ -1,6 +1,6 @@
 <?php
 
-require_once("model/Textbook.php");
+require_once("../model/Textbook.php");
 
 /**
  * Textbook Controller
