@@ -74,7 +74,7 @@ if ($_POST) {
         header('Location: ' . $paypalurl);
     } else {
         // transaction failed
-        header("Location: failed");
+        header("Location: ../failed");
     }
 }
 
@@ -110,9 +110,9 @@ if (isset($_GET["token"]) && isset($_GET["PayerID"])) {
 
     if ((checkAck($response)) && (checkCompleted($response))) {
         // mark the items as sold
-        header("Location: mark/" . json_encode($_SESSION[ITEM_ID_IDENTIFIER]));
+        header("Location: ../mark/" . json_encode($_SESSION[ITEM_ID_IDENTIFIER]));
     } else {
-        header("Location: failed");
+        header("Location: ../failed");
     }
 }
 ?>
