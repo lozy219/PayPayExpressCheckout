@@ -1,7 +1,7 @@
 <?php
-include_once("/include/utilities.php");
-include_once("/include/constant.php");
-include_once("/controller/TextbookController.php");
+include_once("../include/utilities.php");
+include_once("../include/constant.php");
+include_once("../controller/TextbookController.php");
 
 if (session_status() == PHP_SESSION_NONE) {
     session_start(); 
